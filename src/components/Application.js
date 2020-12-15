@@ -7,53 +7,6 @@ import { getAppointmentsForDay, getInterviewersForDay, getInterview } from "help
 
 import DayList from "components/DayList";
 
-// const appointments = [
-//   {
-//     id: 1,
-//     time: "12pm",
-//   },
-//   {
-//     id: 2,
-//     time: "1pm",
-//     interview: {
-//       student: "Lydia Miller-Jones",
-//       interviewer: {
-//         id: 1,
-//         name: "Sylvia Palmer",
-//         avatar: "https://i.imgur.com/LpaY82x.png",
-//       }
-//     }
-//   },
-//   {
-//     id: 3,
-//     time: "2pm"
-//   },
-//   {
-//     id: 4,
-//     time: "3pm",
-//     interview: {
-//       student: "Archie Cohen",
-//       interviewer: {
-//         id: 2,
-//         name: "Tori Malcom",
-//         avatar: "https://i.imgur.com/Nmx0Qxo.png"
-//       }
-//     }
-//   },
-//   {
-//     id: 5,
-//     time: "4pm",
-//     interview: {
-//       student: "Maria Boucher",
-//       interviewer: {
-//         id: 3,
-//         name: "Mildred Nazir",
-//         avatar: "https://i.imgur.com/T2WwVfS.png"
-//       }
-//     }
-//   }
-// ];
-
 
 export default function Application(props) {
 
@@ -99,8 +52,6 @@ export default function Application(props) {
     }, []);
     
     function bookInterview(id, interview) {
-      console.log('id is ', id)
-      console.log('interview is ', interview)
       const appointment = {
         ...state.appointments[id],
         interview: { ...interview }
@@ -109,10 +60,19 @@ export default function Application(props) {
         ...state.appointments,
         [id]: appointment
       };
-      setState({
-        ...state,
-        appointments
-      });
+
+      return axios.put(`http://localhost:8001/api/appointments/${id}`, appointment)
+      .then(() => {
+        setState(prev => ({ ...prev, appointments}))
+      })
+    }
+
+    function cancelInterview(id) {
+      const appointment = {
+      ...state.appointment[id],
+      interview: null
+      }
+      setState(prev => ({ ...prev, appointment}))
     }
 
   return (
