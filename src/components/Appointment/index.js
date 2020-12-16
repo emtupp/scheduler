@@ -12,14 +12,13 @@ import "components/Appointment/styles.scss";
 import useVisualMode from "hooks/useVisualMode.js"
 
 export default function Appointment(props) {
-  // console.log("props 2 ", props)
 
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
-  const CREATE = "CREATE"; //<<
-  const SAVING = "SAVING"; //<<
+  const CREATE = "CREATE";
+  const SAVING = "SAVING";
   const CONFIRM = "CONFIRM";
-  const DELETING = "DELETING"; //<<
+  const DELETING = "DELETING";
   const EDIT = "EDIT";
   const ERROR_SAVE = "ERROR_SAVE";
   const ERROR_DELETE = "ERROR_DELETE";
@@ -39,18 +38,12 @@ export default function Appointment(props) {
   }
 
   function deleteInterview() {
-    // const interview = {
-    //   student: "",
-    //   intrerviewer: null
-    // }
     transition(DELETING, true);
     props
     .cancelInterview( props.id )
     .then(() => {
-      // console.log("HELL YEH")
       return transition(EMPTY)})
     .catch(() => {
-      // console.log("Nah boi")
       return transition(ERROR_DELETE, true)});
   }
 

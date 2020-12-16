@@ -5,6 +5,7 @@ import "components/DayListItem.scss";
 import classnames from "classnames";
 
 export default function DayListItem(props) {
+
   const { selected, spots } = props;
   const dayClass = classnames("day-list__item",
   { "day-list__item--selected": selected },

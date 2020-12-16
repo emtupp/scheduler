@@ -11,13 +11,23 @@ export function getAppointmentsForDay(state, day) {
   }
   for (let id of idArray) {
     for (let key in state.appointments) {
-      if (id == key) {
+      if (id === Number(key)) {
         results.push(state.appointments[key]);
       }
     }
   }
   return results;
 };
+
+export function spotsLeft(state, day) {
+  let spots = 5;
+  for (let targetDay of state.days) {
+    if (targetDay.name === day) {
+      spots -= targetDay.appointments.length;
+    }
+  }
+  return spots;
+}
 
 export function getInterview(state, interview) {
   let result;
@@ -44,7 +54,7 @@ export function getInterviewersForDay(state, day) {
   }
   for (let id of idArray) {
     for (let key in state.interviewers) {
-      if (id == key) {
+      if (id === Number(key)) {
         results.push(state.interviewers[key]);
       }
     }
