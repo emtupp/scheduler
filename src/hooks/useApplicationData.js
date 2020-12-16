@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-// import { spotsLeft } from "../helpers/selectors";
+import { spotsLeft } from "../helpers/selectors";
 
 
 export default function useApplicationData() {
@@ -37,7 +37,10 @@ export default function useApplicationData() {
       ...state.appointments,
       [id]: appointment
     };
-    // const spots = (state.days).map(day => {
+
+    // let days = state.days;
+
+    // const day = (days).map(day => {
     //   if (day.appointments.includes(id)) {
     //     return {
     //       ...day,
@@ -49,7 +52,7 @@ export default function useApplicationData() {
 
     return axios.put(`http://localhost:8001/api/appointments/${id}`, appointment)
     .then(() => {
-      setState(prev => ({ ...prev, appointments/*, spots*/ }))
+      setState(prev => ({ ...prev, appointments/*, day*/ }))
     })
   }
 
