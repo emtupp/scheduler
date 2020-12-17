@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-import { spotsLeft } from "../helpers/selectors";
+// import { spotsLeft } from "../helpers/selectors";
 
 
 export default function useApplicationData() {
