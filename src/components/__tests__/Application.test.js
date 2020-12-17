@@ -1,6 +1,6 @@
 import React from "react";
 
-import { render, cleanup, waitForElement, fireEvent, getByText, getAllByTestId, getByTestId, getByAltText, getByPlaceholderText, prettyDOM } from "@testing-library/react";
+import { render, cleanup, waitForElement, fireEvent, getByText, getAllByTestId, getByTestId, getByAltText, getByPlaceholderText, prettyDOM, queryByText } from "@testing-library/react";
 
 import Application from "components/Application";
 
@@ -27,7 +27,7 @@ describe("Application", () => {
   
   it("loads data, books an interview and reduces the spots remaining for the first day by 1", async () => {
 
-    const { container } = render(<Application />);
+    const { container, debug } = render(<Application />);
 
     await waitForElement(() => getByText(container, "Archie Cohen"));
 
@@ -42,9 +42,15 @@ describe("Application", () => {
     fireEvent.click(interviewer);
 
     fireEvent.click(getByText(appointment, "Save"));
-    console.log(prettyDOM(appointment));
-//     Check that the element with the text "Saving" is displayed.
-//     Wait until the element with the text "Lydia Miller-Jones" is displayed.
-//     Check that the DayListItem with the text "Monday" also has the text "no spots remaining".
+
+    expect(getByText(appointment, "Saving")).toBeInTheDocument();
+
+    await waitForElement(() => queryByText(appointment, "Lydia Miller-Jones"));
+    const day = getAllByTestId(container, "day").find(day =>
+      queryByText(day, "Monday")
+    );
+    
+    // Spots remaining needs to be implemented in order for this text to pass  
+    expect(getByText(day, "no spots remaining")).toBeInTheDocument();
   })
 })

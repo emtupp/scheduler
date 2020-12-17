@@ -14,21 +14,21 @@ export default function DayListItem(props) {
 
   if (spots > 1) {
     return (
-      <li className={dayClass} onClick={() => props.setDay(props.name)}>
+      <li className={dayClass} onClick={() => props.setDay(props.name)} data-testid="day">
       <h2 className="text--regular">{props.name}</h2> 
       <h3 className="text--light">{props.spots} spots remaining</h3>
     </li>
     )
   } else if (spots === 1) {
     return (
-      <li className={dayClass} onClick={() => props.setDay(props.name)}>
+      <li className={dayClass} onClick={() => props.setDay(props.name)} data-testid="day">
         <h2 className="text--regular">{props.name}</h2> 
         <h3 className="text--light">{props.spots} spot remaining</h3>
       </li>
     );
   }
   return (
-    <li className={dayClass} onClick={() => props.setDay(props.name)}>
+    <li className={dayClass} onClick={() => props.setDay(props.name)} data-testid="day">
       <h2 className="text--regular">{props.name}</h2> 
       <h3 className="text--light">no spots remaining</h3>
     </li>
