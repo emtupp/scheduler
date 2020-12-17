@@ -30,14 +30,19 @@ export function spotsLeft(state, day) {
 }
 
 export function getInterview(state, interview) {
-  let result;
   if (interview === null) {
-    return interview;
+    return null;
   }
-  result = interview;
-  const interviewerID = interview.interviewer;
-  const interviewerObj = state.interviewers[interviewerID];
-  result.interviewer = interviewerObj;
+  let result = interview;
+  const interviewerID = Object.keys(state.interviewers).map( id => Number(id) );
+  console.log(interviewerID)
+  
+  for (let id of interviewerID) {
+    if (id === interview.interviewer) {
+      result.student = interview.student;
+      result.interviewer = state.interviewers[id];
+    }
+  }
   return result;
 };
 
