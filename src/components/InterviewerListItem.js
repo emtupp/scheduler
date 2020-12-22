@@ -22,7 +22,7 @@ export default function DayListItem(props) {
       {props.selected && props.name}
       </li>
     );
-  }
+  };
   return (
     <li className={interviewersClass} onClick={props.setInterviewer} data-testid="interviewer" alt={props.name} >
     <img
@@ -32,4 +32,4 @@ export default function DayListItem(props) {
       />
     </li>
   );
-}
+};

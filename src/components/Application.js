@@ -33,7 +33,7 @@ export default function Application(props) {
         />
       );
     }
-  )
+  );
 
   return (
     <main className="layout">
@@ -59,6 +59,4 @@ export default function Application(props) {
       </section>
     </main>
   );
-}
-
-
+};

@@ -9,7 +9,7 @@ import Confirm from "./Confirm";
 import Error from "./Error";
 
 import "components/Appointment/styles.scss";
-import useVisualMode from "hooks/useVisualMode.js"
+import useVisualMode from "hooks/useVisualMode.js";
 
 export default function Appointment(props) {
 
@@ -45,7 +45,7 @@ export default function Appointment(props) {
       return transition(EMPTY)})
     .catch(() => {
       return transition(ERROR_DELETE, true)});
-  }
+  };
 
   return <article className="appointment" data-testid="appointment">
     <Header time={props.time} />
@@ -104,4 +104,4 @@ export default function Appointment(props) {
     />
     )}
   </article>;
-}
+};

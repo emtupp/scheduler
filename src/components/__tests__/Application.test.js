@@ -1,6 +1,6 @@
 import React from "react";
 
-import { render, cleanup, waitForElement, fireEvent, getByText, getAllByTestId, getByTestId, getByAltText, getByPlaceholderText, prettyDOM, queryByText } from "@testing-library/react";
+import { render, cleanup, waitForElement, fireEvent, getByText, getAllByTestId, getByAltText, getByPlaceholderText, queryByText } from "@testing-library/react";
 
 import Application from "components/Application";
 
@@ -49,8 +49,7 @@ describe("Application", () => {
     const day = getAllByTestId(container, "day").find(day =>
       queryByText(day, "Monday")
     );
-    
-    // Spots remaining needs to be implemented in order for this text to pass  
+     
     expect(getByText(day, "no spots remaining")).toBeInTheDocument();
-  })
+  });
 })

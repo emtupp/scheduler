@@ -15,14 +15,15 @@ const InterviewerList = (props) => {
     avatar={value.avatar}
     selected={value.id === props.value}
     setInterviewer={() => props.setInterviewer(value.id)} />
-  )})
+    );
+  });
 
   return (<section className="interviewers">
   <h4 className="interviewers__header text--light">Interviewer</h4>
   <ul className="interviewers__list">{interviewerList}</ul>
   </section>);
 
-}
+};
   
 InterviewerList.propTypes = {
   interviewers: PropTypes.array.isRequired

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import InterviewerList from "../InterviewerList";
 
-import Button from "../Button"
+import Button from "../Button";
 
 export default function Form(props) {
 
@@ -13,21 +13,21 @@ export default function Form(props) {
   const reset = () => {
     setName("");
     setInterviewer(null);
-  }
+  };
 
   const cancel = () => {
     props.onCancel();
     reset();
-  }
+  };
 
   function validate() {
     if (!name) {
       setError("Student name cannot be blank");
       return;
-    }
+    };
     setError("");
     props.onSave(name, interviewer, props.isNew);
-  }
+  };
 
   return (
     <main className="appointment__card appointment__card--create">
@@ -58,5 +58,5 @@ export default function Form(props) {
         </section>
       </section>
     </main>
-  )
-}
+  );
+};

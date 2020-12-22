@@ -14,9 +14,9 @@ export default function useVisualMode(initial) {
         prev.pop();
         return [...prev, changeMode]
       });
-    }
+    };
     setMode(changeMode);
-  }
+  };
   
   const back = () => {
     setHistory(prev => {
@@ -25,10 +25,10 @@ export default function useVisualMode(initial) {
         setMode(prev[prev.length -1])
       } else {
         setMode(initial);
-      }
+      };
       return prev;
-    })
+    });
   };
 
   return { mode, transition, back };
-}
+};
