@@ -21,3 +21,6 @@ npm test
 ```sh
 npm run storybook
 ```
+
+
+!["Monday"](https://github.com/emtupp/scheduler/blob/master/docs/Monday.png?raw=true)
