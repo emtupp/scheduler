@@ -1,4 +1,4 @@
-import { getAppointmentsForDay, getInterviewersForDay, getInterview, spotsLeft } from "helpers/selectors";
+import { getAppointmentsForDay, getInterviewersForDay, getInterview } from "helpers/selectors";
 
 const state = {
   days: [
@@ -69,25 +69,6 @@ test("getAppointmentsForDay returns an empty array when the day is not found", (
   const result = getAppointmentsForDay(state, "Wednesday");
   expect(result.length).toEqual(0);
 });
-
-
-
-test("spotsLeft returns a number", () => {
-  const result = spotsLeft(state, "Wednesday");
-  expect(typeof result).toEqual("number");
-})
-
-test("spotsLeft returns 5 when there are no appointments", () => {
-  const result = spotsLeft(state, "Wednesday");
-  expect(result).toEqual(5);
-})
-
-test("spotsLeft returns 2 when there are 3 appointments", () => {
-  const result = spotsLeft(state, "Monday");
-  expect(result).toEqual(2);
-})
-
-
 
 
 test("getInterviewersForDay returns an array", () => {

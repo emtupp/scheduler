@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-// import { spotsLeft } from "../helpers/selectors";
-
 
 export default function useApplicationData() {
 
@@ -28,7 +26,7 @@ export default function useApplicationData() {
       
   const setDay = day => setState(prev => ({ ...prev, day }));
 
-  const bookInterview = (id, interview) => {
+  const bookInterview = (id, interview, isNew) => {
 
     const appointment = {
       ...state.appointments[id],
@@ -39,21 +37,17 @@ export default function useApplicationData() {
       [id]: appointment
     };
 
-    // let days = state.days;
-
-    // const day = (days).map(day => {
-    //   if (day.appointments.includes(id)) {
-    //     return {
-    //       ...day,
-    //       spots: spotsLeft( ...state.days, day.name )
-    //     }
-    //   }
-    //   return day;
-    // })
+    const days = state.days.map(day => {
+      if (day.appointments.includes(id) && isNew ) {
+        day.spots -= 1;
+        return day;
+      }
+      return day;
+    });
 
     return axios.put(`http://localhost:8001/api/appointments/${id}`, appointment)
     .then(() => {
-      setState(prev => ({ ...prev, appointments/*, day*/ }))
+      setState(prev => ({ ...prev, appointments, days }))
     })
   }
 
@@ -67,9 +61,17 @@ export default function useApplicationData() {
       [id]: appointment
     };
 
+    const days = state.days.map(day => {
+      if (day.appointments.includes(id) ) {
+        day.spots += 1;
+        return day;
+      }
+      return day;
+    });
+
     return axios.delete(`http://localhost:8001/api/appointments/${id}`, appointment)
     .then(() => {
-    setState(prev => ({ ...prev, appointments }))
+    setState(prev => ({ ...prev, appointments, days }))
   })
   }
 

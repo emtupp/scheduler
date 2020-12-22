@@ -19,23 +19,12 @@ export function getAppointmentsForDay(state, day) {
   return results;
 };
 
-export function spotsLeft(state, day) {
-  let spots = 5;
-  for (let targetDay of state.days) {
-    if (targetDay.name === day) {
-      spots -= targetDay.appointments.length;
-    }
-  }
-  return spots;
-}
-
 export function getInterview(state, interview) {
   if (interview === null) {
     return null;
   }
   let result = interview;
   const interviewerID = Object.keys(state.interviewers).map( id => Number(id) );
-  console.log(interviewerID)
   
   for (let id of interviewerID) {
     if (id === interview.interviewer) {
