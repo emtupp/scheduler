@@ -37,6 +37,7 @@ export default function useApplicationData() {
       [id]: appointment
     };
 
+    // Changes spots remaining
     const days = state.days.map(day => {
       if (day.appointments.includes(id) && isNew ) {
         day.spots -= 1;
@@ -61,6 +62,7 @@ export default function useApplicationData() {
       [id]: appointment
     };
 
+    // Changes spots remaining
     const days = state.days.map(day => {
       if (day.appointments.includes(id) ) {
         day.spots += 1;

@@ -1,3 +1,5 @@
+// See tests for details on helper functions
+
 export function getAppointmentsForDay(state, day) {
   let idArray = [];
   const results = [];
