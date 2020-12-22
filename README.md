@@ -22,5 +22,6 @@ npm test
 npm run storybook
 ```
 
+## Final Product
 
 !["Monday"](https://github.com/emtupp/scheduler/blob/master/docs/Monday.png?raw=true)
